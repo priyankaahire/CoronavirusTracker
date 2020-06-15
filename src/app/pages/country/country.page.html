@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="dashboard-toolbar" color="primary">
+    <ion-title class="title">
+      Country
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="country-container">
+    <div class="info-view">
+      <ion-row  align-items-center class="dashboard-title">
+        <ion-col size="12">
+          <ion-select  [(ngModel)]="selectedCountry" (ionChange)="countryfilter($event);" style="width:100%; font-size: 15px;" >
+            <ion-select-option [value]="country.code" *ngFor="let country of countryData">{{country.name}}</ion-select-option>
+          </ion-select>
+        </ion-col>
+      </ion-row>
+      <ion-row class="cases-box" *ngIf="info">
+        <ion-col class="confirmedBox">Confirmed {{info.confirmed | number : 0}}</ion-col>
+        <ion-col class="activeBox">Active {{activeCases | number : 0}}</ion-col>
+        <ion-col class="recoveredBox">Recovered {{info.recovered | number : 0}}</ion-col>
+        <ion-col class="deathsBox">Deaths {{info.deaths | number : 0}}</ion-col>
+    </ion-row>
+    </div>
+    <div class="piechart-view">
+      <ion-card-content id="pieChartContainer" class="shadow-effect">
+        <!-- <div id="pieChart" style="height:40vh; width:80vw"></div> -->
+        <canvas #pieCanvas style="height:40vh; width:80vw" id="pieCanvas"></canvas>
+      </ion-card-content>
+    </div>
+    <div class="barchart-view">
+      <ion-card-content  id="barChartContainer" class="shadow-effect">
+        <!-- <div id="barChart" style="height:50vh; width:80vw"></div> -->
+
+      
+        <canvas #barCanvas style="height:40vh; width:80vw" id="barCanvas"></canvas>
+   
+      </ion-card-content>
+    </div>
+  </div>
+</ion-content>

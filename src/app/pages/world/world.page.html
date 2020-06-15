@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="dashboard-toolbar" color="primary">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="2">
+          <ion-img class="favicon" src="assets/icon/coronavirus.png"></ion-img>
+        </ion-col>
+        <ion-col size="6" style="top: 10px;
+          left: 25px;">
+          Coronavirus Tracker
+        </ion-col>
+        <ion-col size="4">
+          <ion-datetime min="2020" max="11-06-2020" pickerFormat="DD/MM/YYYY" displayFormat="MMM DD YYYY"
+            value="{{this.todaydate}}"></ion-datetime>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+  <div class="dashboard-container">
+    <div class="info-view">
+      <ion-row align-items-center class="dashboard-title">
+        <ion-col color="primary" size="12">COVID-19 Dashboard</ion-col>
+      </ion-row>
+      <ion-row class="cases-box">
+        <ion-col class="confirmedBox">Confirmed {{info.confirmed | number : 0}}</ion-col>
+        <ion-col class="activeBox">Active {{activeCases | number : 0}}</ion-col>
+        <ion-col class="recoveredBox">Recovered {{info.recovered | number : 0}}</ion-col>
+        <ion-col class="deathsBox">Deaths {{info.deaths | number : 0}}</ion-col>
+      </ion-row>
+    </div>
+    <div class="table-view">
+    </div>
+    <div class="chart-view">
+      <ion-card-content class="shadow-effect">
+        <canvas style="height:40vh; width:80vw" #pieCanvas></canvas>
+      </ion-card-content>
+    </div>
+
+  </div>
+</ion-content>

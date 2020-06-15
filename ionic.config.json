@@ -1,7 +1,8 @@
 {
   "name": "CoronavirusTracker",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }
