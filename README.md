@@ -35,9 +35,9 @@ Following step to required Andriod Development
 ### Project Setup
     1. Generate the native project, if it does not already exist.
        For Capacitor, run the following:
-       1 ionic capacitor add android
+       ####1 ionic capacitor add android
        For Cordova, run the following:
-       1. ionic cordova prepare android
+       ####1. ionic cordova prepare android
 
 ### Running with Capacitor
     1. Develop the Ionic app and sync it to the native project.
