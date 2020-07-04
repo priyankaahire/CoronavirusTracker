@@ -4,9 +4,11 @@ import * as moment from 'moment';
 import { ApiService } from 'src/app/providers/api-service';
 import { CountryMappingService } from 'src/app/providers/country-mapping.service';
 import { DatePicker } from '@ionic-native/date-picker/ngx';
-import {  LoadingController , ModalController, Platform} from '@ionic/angular';
+import {  LoadingController , ModalController, Platform, IonRouterOutlet} from '@ionic/angular';
 import { Network } from '@ionic-native/network/ngx';
 import {map,tap} from 'rxjs/operators';
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
 @Component({
   selector: 'app-country',
   templateUrl: 'country.page.html',
@@ -44,7 +46,10 @@ export class CountryPage implements OnInit {
     public modalCtrl: ModalController,
     public loadingCtrl: LoadingController,
     public network: Network,
-    public elementRef: ElementRef) {
+    public elementRef: ElementRef,
+    private routerOutlet: IonRouterOutlet) {
+    
+
     // watch network for a disconnection
   this.disconnectSubscription = this.network.onDisconnect().subscribe(() => {
     console.log('network was disconnected :-(');

@@ -3,9 +3,11 @@ import { ApiService } from 'src/app/providers/api-service';
 import { map, catchError } from "rxjs/operators";
 import { Observable , } from 'rxjs';
 import { Chart } from 'chart.js';
-import {  LoadingController , ModalController, Platform} from '@ionic/angular';
+import { ToastController, LoadingController , ModalController, Platform, IonRouterOutlet} from '@ionic/angular';
 import { Network } from '@ionic-native/network/ngx';
 import { HttpClient } from '@angular/common/http';
+import { Plugins } from '@capacitor/core';
+const { App } = Plugins;
 export interface Config {
   technologies: string;
 }
@@ -24,56 +26,37 @@ export class WorldPage implements OnInit {
   activeCases: any;
   private pieChart: Chart;
   disconnectSubscription:any;
-  public columns : any = [
-    { prop: 'name' },
-    { name: 'Summary' },
-    { name: 'Company' }
-  ]
-  public rows : any;
-  public config : Config;
- 
   @ViewChild("pieCanvas") pieCanvas: ElementRef;
+  
   constructor(private _apiService: ApiService,
     public platform: Platform,
     public modalCtrl: ModalController,
     public loadingCtrl: LoadingController,
     public network: Network,
     public elementRef: ElementRef,
-    private _HTTP   	: HttpClient) {
+    private _HTTP   	: HttpClient,
+    private toastCtrl: ToastController,
+    private routerOutlet: IonRouterOutlet) {
+      // this.platform.backButton.subscribeWithPriority(666666, () => {
+      //   if (!this.routerOutlet.canGoBack()) {
+      //     if(window.confirm("Do you want to exist app")) {
+      //               navigator["app"].exitApp();
+      //         // App.exitApp();
+      //     }
+          
+      //   }
+      // });
+      // this.subscripbe = this.platform.subscribeWithPriority(666666, () => {
+      //   if(this.constructor.name == "WordPage") {
+      //     if(window.confirm("Do you want to exist app")) {
+      //         navigator["app"].exitApp();
+      //     }
+
+      //   }
+      // })
     this.getDetails();
-   // this.getTableData();
-    this.columns = [
-      { prop: 'name' },
-      { name: 'Summary' },
-      { name: 'Company' }
-    ];
-        // watch network for a disconnection
-  this.disconnectSubscription = this.network.onDisconnect().subscribe(() => {
-    
-  });
-
-  // stop disconnect watch
-  this.disconnectSubscription.unsubscribe();
-
-
-  // watch network for a connection
-  let connectSubscription = this.network.onConnect().subscribe(() => {
-    console.log('network connected!');
-    // We just got a connection but we need to wait briefly
-    // before we determine the connection type. Might need to wait.
-    // prior to doing any api requests as well.
-    setTimeout(() => {
-      if (this.network.type === 'wifi') {
-        console.log('we got a wifi connection, woohoo!');
-      }
-    }, 3000);
-  });
-
-  // stop connect watch
-  connectSubscription.unsubscribe();
-    
   }
-  
+
   ngOnInit() {
   }
   ngAfterViewInit() {
@@ -82,22 +65,11 @@ export class WorldPage implements OnInit {
   getDetails() {
     this._apiService.getInfo().subscribe((response: any) => {
       this.info = response.result;
-      // for (let key of Object.keys(this.info)) {
-      //    this.chartData.push(this.info[key]);
-      // }
-      // let sum = this.chartData.reduce((a, b) => a + b, 0)
-      // this.total = sum;
-      // this.todaydate = response.date;
-    //  for (let key of Object.keys(this.info)) {
         this.activeCases = this.info["confirmed"] - (this.info["recovered"] + this.info["deaths"]);
-       // this.chartData.push(this.info["confirmed"]);
         this.chartData.push(this.activeCases);
         this.chartData.push(this.info["recovered"]);
         this.chartData.push(this.info["deaths"]);
-     //}
-     //let sum = this.chartData.reduce((a, b) => a + b, 0)
-     //this.total = sum;
-     this.todaydate = response.date;
+        this.todaydate = response.date;
         
     });
   }
@@ -148,14 +120,6 @@ export class WorldPage implements OnInit {
     //   this.listdata = response.result;
     //   console.log(this.listdata);
     // });
-    this._HTTP
-    .get<Config>('../../../assets/data/demo.json')
-    .subscribe((data) =>
-    {
-       this.rows = data.technologies;
-    });
-    console.log("in ionic load");
-    console.log(this.rows);
   }
 
 }

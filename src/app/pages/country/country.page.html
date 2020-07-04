@@ -11,7 +11,7 @@
     <div class="info-view">
       <ion-row  align-items-center class="dashboard-title">
         <ion-col size="12">
-          <ion-select  [(ngModel)]="selectedCountry" (ionChange)="countryfilter($event);" style="width:100%; font-size: 15px;" >
+          <ion-select [(ngModel)]="selectedCountry" (ionChange)="countryfilter($event);" style="width:100%; font-size: 15px;" >
             <ion-select-option [value]="country.code" *ngFor="let country of countryData">{{country.name}}</ion-select-option>
           </ion-select>
         </ion-col>
@@ -25,17 +25,12 @@
     </div>
     <div class="piechart-view">
       <ion-card-content id="pieChartContainer" class="shadow-effect">
-        <!-- <div id="pieChart" style="height:40vh; width:80vw"></div> -->
         <canvas #pieCanvas style="height:40vh; width:80vw" id="pieCanvas"></canvas>
       </ion-card-content>
     </div>
     <div class="barchart-view">
       <ion-card-content  id="barChartContainer" class="shadow-effect">
-        <!-- <div id="barChart" style="height:50vh; width:80vw"></div> -->
-
-      
         <canvas #barCanvas style="height:40vh; width:80vw" id="barCanvas"></canvas>
-   
       </ion-card-content>
     </div>
   </div>

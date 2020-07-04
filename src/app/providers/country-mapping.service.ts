@@ -17,7 +17,6 @@ export class CountryMappingService {
   
   mappingCountry(data:any):Observable<any[]>{
     var countries = [
-                      {code:'IND', name:'India'},  
                       {code: "KAZ",name:"Kazakhstan"}, 
                       {code: "KWT",name:"Kuwait"},
                       {code: "KOR",name:"South Korea"}, 
@@ -113,7 +112,7 @@ export class CountryMappingService {
                       {code: "KNA",name:"Saint Kitts and Nevis"} ,
                       {code: "RKS",name:"Kosovo"} ,
                       {code: "BWA",name:"Botswana"} ,
-                      {code: "MSZ",name:""} ,
+                      // {code: "MSZ",name:""} ,
                       {code: "MMR",name:"Myanmar (Burma)"} ,
                       {code: "SLE",name:"Sierra Leone"} ,
                       {code: "BDI",name:"Burundi"} ,
@@ -163,7 +162,7 @@ export class CountryMappingService {
                       {code: "COG",name:"Republic of the Congo"} ,
                       {code: "CRI",name:"Costa Rica"} ,
                       {code: "CIV",name:"Côte d'Ivoire"} ,
-                      {code: "DPS",name:""} ,
+                      // {code: "DPS",name:""} ,
                       {code: "HRV",name:"Croatia"} ,
                       {code: "CUB",name:"Cuba"} ,
                       {code: "CZE",name:"Czechia"} ,
@@ -191,7 +190,7 @@ export class CountryMappingService {
                       {code: "GRC",name:"Greece"} ,
                       {code: "GIN",name:"Guinea"} ,
                       {code: "GTM",name:"Guatemala"} ,
-                      {code: "VAT",name:""} ,
+                      // {code: "VAT",name:""} ,
                       {code: "HUN",name:"Hungary"} ,
                       {code: "HTI",name:"Haiti"} ,
                       {code: "HND",name:"Honduras"} ,
