@@ -7,7 +7,6 @@ export class AppGlobalService {
     readonly MOBILE_KEY = "mobile"
     readonly FIRST_TIME_LOGIN_KEY = "first_time_login"
     readonly USER_DATA_KEY = "user_data"
-
     readonly BASE_URL_COVID = "https://covidapi.info/api/v1/global"
 
     user_id: string = ""

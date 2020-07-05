@@ -66,7 +66,7 @@ export class AppComponent implements OnDestroy {
           text: 'Exit',
           handler: () => {
             console.log('Confirm Okay');
-            App.exitApp();
+            navigator['app'].exitApp();
           }
         }
       ]
