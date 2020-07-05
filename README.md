@@ -1,4 +1,15 @@
 # Ionic : Coronavirus Tracker app
+<div style="disply:inline-flex">
+<img src="screenshots/world.jpg" width="200px" height="300px">
+<img src="screenshots/country.jpg" width="200px" height="300px">
+<img src="screenshots/guidelines.jpg" width="200px" height="300px">
+<img src="screenshots/help.jpg" width="200px" height="300px">
+![](screenshots/world.jpg)
+![](screenshots/country.jpg)
+![](screenshots/guidelines.jpg)
+![](screenshots/help.jpg)
+</div>
+
 
 ## How to Run Locally
     1. Clone this repo.
